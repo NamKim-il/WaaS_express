@@ -10,5 +10,10 @@ router.use('/posts', postRouter);
 router.use('/err', (req, res, next) => {
   next('error occurs!');
 });
+router.use((err,req,res,next)=>{
+  console.log(err.stack);
+  res.status(500).json({success:false})
+})
+
 
 module.exports = router;
